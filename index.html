@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANZERO VA | Personal Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap');
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-content {
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- Animated Particle Background -->
+    <canvas id="bg-canvas" class="fixed inset-0 z-0 pointer-events-none"></canvas>
+
+    <!-- Main Content -->
+    <div class="relative z-10">
+        
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-xs font-bold">VA</div>
+                    <span class="text-2xl font-bold tracking-tighter title-font">VANZERO VA</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                    <a href="#home" onclick="smoothScrollTo('home')" class="hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#about" onclick="smoothScrollTo('about')" class="hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#connect" onclick="smoothScrollTo('connect')" class="hover:text-cyan-400 transition-colors">Connect</a>
+                </div>
+
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden text-4xl text-white">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-[60] flex-col items-center justify-center gap-12 text-3xl font-medium md:hidden">
+            <button onclick="closeMobileMenu()" class="absolute top-10 right-8 text-5xl text-white">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <a href="#home" onclick="smoothScrollTo('home'); closeMobileMenu()" class="hover:text-cyan-400 transition-colors">Home</a>
+            <a href="#about" onclick="smoothScrollTo('about'); closeMobileMenu()" class="hover:text-cyan-400 transition-colors">About</a>
+            <a href="#connect" onclick="smoothScrollTo('connect'); closeMobileMenu()" class="hover:text-cyan-400 transition-colors">Connect</a>
+        </div>
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center relative pt-20">
+            <div class="max-w-5xl mx-auto px-6 text-center hero-content">
+                <!-- Profile Picture -->
+                <div class="flex justify-center mb-10">
+                    <div class="relative">
+                        <img src="profile.jpg" 
+                             alt="VANZERO VA"
+                             class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-3xl object-cover shadow-2xl shadow-cyan-500/30 border-8 border-white/10 transition-all duration-700 hover:rotate-2 hover:scale-105">
+                        <!-- Glow ring -->
+                        <div class="absolute inset-0 rounded-3xl border border-cyan-400/30 animate-pulse"></div>
+                    </div>
+                </div>
+
+                <!-- Name -->
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter title-font mb-12 text-white">
+                    VANZERO VA
+                </h1>
+
+                <!-- Scroll hint -->
+                <div class="absolute bottom-12 left-1/2 flex flex-col items-center opacity-60">
+                    <span class="text-xs tracking-[3px] font-medium mb-3">SCROLL TO EXPLORE</span>
+                    <div class="w-px h-14 bg-gradient-to-b from-transparent via-white to-transparent"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-28 bg-black border-t border-white/10">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-3 bg-white/5 px-6 py-2 rounded-3xl mb-6">
+                        <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                        <span class="uppercase text-xs tracking-widest font-medium">Who I Am</span>
+                    </div>
+                    <h2 class="text-6xl font-bold tracking-tighter title-font">About Me</h2>
+                </div>
+                
+                <div class="max-w-3xl mx-auto text-lg leading-relaxed text-white/80 text-center">
+                    <p>
+                        Hi, I’m VANZERO VA, a Mechanical Engineering graduate and aspiring Virtual Assistant. 
+                        I’m highly organized, detail-oriented, and skilled in data management, research, and tools like 
+                        Microsoft Office and Google Workspace. I’m eager to learn, reliable, and committed to helping 
+                        businesses run smoothly and efficiently.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section id="connect" class="py-28 bg-black border-t border-white/10">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-6xl font-bold tracking-tighter title-font mb-6">Let's Connect</h2>
+                <p class="text-xl text-white/60 mb-16 max-w-md mx-auto">
+                    Reach out anytime — I'm just one message away.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="mailto:ivankurt027@gmail.com" target="_blank"
+                       class="glass group p-8 rounded-3xl flex flex-col items-center gap-6 hover:bg-white/10 transition-all hover:scale-105">
+                        <i class="fa-solid fa-envelope text-5xl text-cyan-400"></i>
+                        <div>
+                            <div class="font-semibold text-xl">Email</div>
+                            <div class="text-sm text-white/60">ivankurt027@gmail.com</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/ivan-ponce-98b832307/?trk=opento_sprofile_details" target="_blank"
+                       class="glass group p-8 rounded-3xl flex flex-col items-center gap-6 hover:bg-white/10 transition-all hover:scale-105">
+                        <i class="fa-brands fa-linkedin text-5xl text-cyan-400"></i>
+                        <div>
+                            <div class="font-semibold text-xl">LinkedIn</div>
+                            <div class="text-sm text-white/60">Professional Network</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://x.com/ivankurt027" target="_blank"
+                       class="glass group p-8 rounded-3xl flex flex-col items-center gap-6 hover:bg-white/10 transition-all hover:scale-105">
+                        <i class="fa-brands fa-x-twitter text-5xl text-cyan-400"></i>
+                        <div>
+                            <div class="font-semibold text-xl">X</div>
+                            <div class="text-sm text-white/60">@ivankurt027</div>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.facebook.com/ivankurt.ponce" target="_blank"
+                       class="glass group p-8 rounded-3xl flex flex-col items-center gap-6 hover:bg-white/10 transition-all hover:scale-105">
+                        <i class="fa-brands fa-facebook text-5xl text-cyan-400"></i>
+                        <div>
+                            <div class="font-semibold text-xl">Facebook</div>
+                            <div class="text-sm text-white/60">VANZERO VA</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 border-t border-white/10 text-center text-white/40 text-sm">
+            <div class="max-w-7xl mx-auto px-6">
+                © 2026 VANZERO VA. Made with passion in the Philippines.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ============= PARTICLE BACKGROUND =============
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let particles = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2.8 + 1.2;
+                this.speedX = Math.random() * 0.6 - 0.3;
+                this.speedY = Math.random() * 0.6 - 0.3;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x < 0 || this.x > width) this.speedX *= -1;
+                if (this.y < 0 || this.y > height) this.speedY *= -1;
+            }
+            
+            draw() {
+                ctx.fillStyle = 'rgba(224, 242, 255, 0.85)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function resizeCanvas() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            particles = [];
+            for (let i = 0; i < 160; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connect() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 135) {
+                        ctx.strokeStyle = `rgba(165, 243, 252, ${1 - distance / 135})`;
+                        ctx.lineWidth = 0.7;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.09)';
+            ctx.fillRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            connect();
+            requestAnimationFrame(animate);
+        }
+
+        // Smooth scroll
+        function smoothScrollTo(section) {
+            const element = document.getElementById(section);
+            if (element) element.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Mobile Menu Controls
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Initialize everything
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            animate();
+
+            // Mobile menu button
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            mobileBtn.addEventListener('click', toggleMobileMenu);
+
+            // Resize handler
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+            });
+        });
+    </script>
+</body>
+</html>
